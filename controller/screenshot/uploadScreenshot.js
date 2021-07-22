@@ -1,5 +1,5 @@
 const path = require('path');
-// const uploadFile = require('../../model/uploadOss')
+const uploadFile = require('../../model/uploadOss')
 const createScreenshot = require('../../model/createScreenshot')
 const interceptName = require('../../utils/interceptRouterName');
 const logger = require('../../utils/logger');
@@ -12,7 +12,6 @@ const app = async ({resolve, modelType, router, data, sId, className, isQualityC
   const imageUrl = `images/screenshot/${routerName}/${id}.png`
   // 缓存当前订单的数据
   global.objectData[routerName] = data
-
   // 调用chrome，生成截图
   createScreenshot({routerName, id, modelType, className}, async (res) => {
     // 记录生成花费时间
@@ -23,13 +22,10 @@ const app = async ({resolve, modelType, router, data, sId, className, isQualityC
     let pathName = '/' + imageUrl
     // 如果路径正确，上传到OSS
     if (pathUrl && resolve) {
-      // let ossFile = await uploadFile(pathName, pathUrl)
-      let ossFile = {
-        name: '/去model里的uploadOss配置自己的oss，图片在本地'
-      }
+      let ossFile = await uploadFile(pathName, pathUrl)
       logger.info('-> 上传完毕...\n', ossFile.name)
       // 请空缓存上线记得打开，便于调试先隐藏
-      // global.objectData[routerName] = ''
+      global.objectData[routerName] = ''
       let url = '//oss-img.gaocaipeng.com' + ossFile.name
       if (isQualityConversion) {
         url = url + '?x-oss-process=image/interlace,1/format,jpg'
