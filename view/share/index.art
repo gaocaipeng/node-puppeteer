@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no'/>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <link rel="icon" href="//oss-img.u-bx.com/images/home/favicon.ico" type="image/x-icon">
+    <title>{{vehicleLicenceNo}}</title>
+    <style>
+      *{
+        margin:0;
+        padding:0;
+        list-style:none;
+        font-family: AlibabaPuHuiTi-Light;
+      }
+      body,html {
+        width:100%;
+      }
+      .wrapper {
+        width: 100%;
+        min-height: 667px;
+        overflow:hidden;
+        display: flex;
+        flex-direction:column;
+      }
+      .wrapper .wrap-top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        padding:0 16px;
+        box-sizing: border-box;
+        background: linear-gradient(270deg, #FFC900 0%, #FF9900 100%);
+      }
+      .wrapper .wrap-car {
+        position: absolute;
+        top: 38px;
+        right: 0px;
+        width: 117px;
+        height: 52px;
+        display: flex;
+        z-index: 10;
+      }
+      .wrapper .wrap-top .logo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(255, 201, 0, 0.5)
+      }
+      .wrapper .wrap-top .logo img {
+        width: 58px;
+        height:58px;
+      }
+      .wrapper .wrap-top h2 {
+        font-size: 22px;
+        color:#fff;
+        font-weight:500;
+      }
+      .insurance {
+        position: relative;
+        z-index: 2;
+        width:100%;
+        flex:1;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        margin: 80px 0 20px;
+        background: #fff;
+      }
+      .insurance .insurance-totalcost {
+        border-radius: 10px;
+        padding: 13px 0;
+        box-sizing: border-box;
+        margin: 0 16px;
+        border-bottom: 2px dashed rgba(255, 201, 0, 0.3);
+      }
+      .insurance .insurance-totalcost h2 {
+        font-size: 17px;
+        font-weight: 600;
+      }
+      .insurance .insurance-totalcost span {
+        font-size: 28px;
+        color: #FF9802;
+      }
+      .insurance .insurance-totalcost .fuhao {
+        font-size: 16px;
+        padding-right: 3px;
+      }
+      .insurance .ins-head {
+        display: flex;
+        justify-content: space-between;
+        align-items:center;
+        padding: 13px 16px 0 0;
+        box-sizing: border-box;
+      }
+      .insurance .company {
+        padding: 0 0 13px;
+        margin: 13px 16px 0px 16px;
+        border-bottom: 1px solid #eee;
+      }
+      .insurance .ins-head .ins-head-left {
+        display: flex;
+        align-items: center;
+      }
+      .insurance .ins-head .ins-head-left .rectangle {
+        display: inline-block;
+        margin-right: 12px;
+        width: 4px;
+        height: 17px;
+        background: #FF9A01;
+      }
+      .insurance .ins-head .ins-head-left h3 {
+        font-size: 17px;
+        font-weight: 600;
+      }
+      .insurance .ins-head .ins-head-left .rate {
+        display: inline-block;
+        border: 1px solid rgba(247, 98, 96, 0.3);
+        background: rgba(247, 98, 96, 0.1);
+        color: #F76260;
+        border-radius: 5px;
+        padding: 0 3px;
+        font-size: 12px;
+        line-height: 15px;
+      }
+      .insurance .ins-head .ins-head-left .timers {
+        margin: 0 6px;
+        font-size: 12px;
+        color: #989897;
+      }
+      .insurance .ins-head .ins-head-right {
+        font-size: 17px;
+        font-weight: 500;
+      }
+      .insurance .ins-head .ins-head-right span {
+        color: #FF9A01;
+      }
+      .insurance .ins-head .ins-head-right .ins-head-right-min {
+        font-size: 12px;
+      }
+      .insurance .traffic {
+        margin-top: 5px;
+      }
+      .insurance .vehicleTax {
+        padding-left: 16px;
+      }
+      .insurance .vehicleTax p {
+        display: flex;
+        justify-content: space-between;
+        padding: 7px 16px 13px 0;
+        border-bottom: 1rpx solid #efefef;
+        font-size: 14px;
+        border-bottom:1px solid #E5E5E5;
+      }
+      .insurance .vehicleTax p span:first-child {
+        color: #666464;
+      }
+      .insurance .vehicleTax p span:last-child {
+        color: #FF9A01;
+      }
+      .insurance .business {
+        position: relative;
+      }
+      .insurance .business .business-footer {
+        height: 30px;
+        margin-top: 10px;
+        background: #fbfbfb;
+        position: relative;
+      }
+      .insurance .business .business-footer .generate {
+        padding-right: 15px;
+      }
+
+      .insurance-details {
+        width: 100%;
+      }
+      .insurance-details .triangle {
+        position: relative;
+        top: 1px;
+        left: 25px;
+        z-index: 2;
+      }
+      .insurance-details .triangle .triangle-title,
+      .insurance-details .triangle .triangle-title:after {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-color: transparent;
+        display: block;
+      }
+      .insurance-details .triangle .triangle-title {
+        border-bottom-color: #e9e9e9;
+        border-width: 8px;
+      }
+      .insurance-details .triangle .triangle-title:after {
+        content: '';
+        border-width: 7px;
+        border-bottom-color: #F8F8F8;
+        margin-top: -5px;
+        margin-left: -7px;
+      }
+      .insurance-details .ins-table {
+        position: relative;
+        margin: 16px;
+        background: #F8F8F8;
+        // border: 1px solid #e9e9e9;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .insurance-details .ins-table .ins-table-th {
+        width: 100%;
+        color: #999;
+        padding: 0 1px;
+        box-sizing: border-box;
+        font-size: 12px;
+        display: flex;
+        justify-content: space-between;
+        background: #F2F2F2;
+      }
+      .insurance-details .ins-table .ins-table-tr {
+        width: 100%;
+        padding: 0 5rpx;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+      }
+      .insurance-details .ins-table .ins-table-tr:nth-child(even) {
+        // background: #fff;
+      }
+      .insurance-details .ins-table .ins-table-td {
+        padding: 10px 7px;
+        line-height: 10px;
+        text-align: center;
+        display: inline-block;
+      }
+      .insurance-details .ins-table .ins-table-td.left {
+        width: 150px;
+        text-align: left;
+      }
+      .insurance-details .ins-table .ins-table-td.right {
+        width: 80px;
+        text-align: right;
+      }
+      .insurance-details .ins-table .ins-table-td.center {
+        width: 100px;
+        text-align: left;
+      }
+      .non-vehicle-plan-snap .ins-table-td.left {
+        width: 100px !important;
+      }
+      .non-vehicle-plan-snap .ins-table-td.center {
+        width: 180px !important;
+      }
+      .non-vehicle-plan-snap .ins-table-td.right {
+        width: 50px !important;
+      }
+      .non-vehicle-plan-snap .ins-table-tr .ins-table-td {
+        line-height: 20px !important;
+      }
+    </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="wrap-top">
+      <div class="logo">
+        <img src='{{brandLogo}}'/>
+      </div>
+      <h2>{{vehicleLicenceNo}}</h2>
+    </div>
+    <img class="wrap-car" src="https://oss-img.u-bx.com/images/trade/create-share-car.png">
+    <div class="insurance">
+      <div class="insurance-totalcost">
+        <h2>保费合计：<span class="fuhao">¥</span><span>{{totalCost}}</span></h2>
+      </div>
+      <div class="ins-head company">
+        <div class="ins-head-left">
+          <h3>投保公司</h3>
+        </div>
+        <div class="ins-head-right">
+          {{insCompanyName}}
+        </div>
+      </div>
+      {{if trafficIns.cost !== undefined}}
+      <div class="traffic">
+        <div class="ins-head">
+          <div class="ins-head-left">
+            <span class="rectangle"></span>
+            <h3>交强险</h3>
+            <span class="timers">{{trafficIns.validBeginTime}}</span>
+            <span class="rate">折扣{{trafficIns.discount}}</span>
+          </div>
+          <div class="ins-head-right">
+            <span class="ins-head-right-min">¥</span>
+            {{if trafficIns.costLeft}}
+              <span>{{trafficIns.costLeft}}</span><span class="ins-head-right-min">.{{trafficIns.costRight}}</span>
+            {{else}}
+              <span>{{trafficIns.cost}}</span>
+            {{/if}}
+          </div>
+        </div>
+        <div class="vehicleTax">
+          <p>
+            <span>车船税</span>
+            {{if vehicleTax.taxAmount !== undefined}}
+              <span>¥ {{vehicleTax.taxAmount}}</span>
+            {{else}}
+              <span>¥ 0</span>
+            {{/if}}
+          </p>
+        </div>
+      </div>
+      {{/if}}
+      {{if businessIns.cost !== undefined}}
+      <div class="business">
+        <div class="ins-head">
+          <div class="ins-head-left">
+            <span class="rectangle"></span>
+            <h3>商业险</h3>
+            <span class="timers">{{businessIns.validBeginTime}}</span>
+            <span class="rate">折扣{{businessIns.discount}}</span>
+          </div>
+          <div class="ins-head-right">
+            <span class="ins-head-right-min">¥</span>
+            {{if businessIns.costLeft}}
+              <span>{{businessIns.costLeft}}</span><span class="ins-head-right-min">.{{businessIns.costRight}}</span>
+            {{else}}
+              <span>{{businessIns.cost}}</span>
+            {{/if}}
+          </div>
+        </div>
+        <div class="commercial-insurance">
+          <div class="insurance-details">
+            <div class="ins-table">
+              <div class="ins-table-th">
+                <span class="ins-table-td left">险种</span>
+                <span class="ins-table-td center">保额</span>
+                <span class="ins-table-td right">保费</span>
+              </div>
+              {{each tableData value i}}
+                <div class="ins-table-tr">
+                  <span class="ins-table-td left">
+                    {{value.name}}
+                  </span>
+                  <span class="ins-table-td center">
+                    {{value.showExtra}}
+                  </span>
+                  <span class="ins-table-td right">
+                    {{value.price}}
+                  </span>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{if nonVehiclePlanSnap.premiumAmount !== undefined}}
+      <div class="non-vehicle-plan-snap">
+        <div class="ins-head">
+          <div class="ins-head-left">
+            <span class="rectangle"></span>
+            <h3>非车险</h3>
+            <span class="timers">{{nonVehiclePlanSnap.validBeginTime}}</span>
+          </div>
+          <div class="ins-head-right">
+            <span>¥ {{nonVehiclePlanSnap.premiumAmount}}</span>
+          </div>
+        </div>
+        <div class="commercial-insurance">
+          <div class="insurance-details">
+            <div class="ins-table">
+              <div class="ins-table-th">
+                <span class="ins-table-td left">险种</span>
+                <span class="ins-table-td center">保障内容</span>
+                <span class="ins-table-td right">保费</span>
+              </div>
+                <div class="ins-table-tr">
+                  <span class="ins-table-td left">
+                    {{nonVehiclePlanSnap.planName}}
+                  </span>
+                  <span class="ins-table-td center">
+                    {{@ nonVehiclePlanSnap.planDesc}}
+                  </span>
+                  <span class="ins-table-td right">
+                    {{nonVehiclePlanSnap.premiumAmount}}
+                  </span>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+    </div>
+  </div>
+</body>
+
+</html>

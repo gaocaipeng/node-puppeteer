@@ -1,0 +1,6 @@
+node_modules
+images
+logs
+.git
+exclude.list
+start.log

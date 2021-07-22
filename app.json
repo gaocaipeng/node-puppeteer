@@ -1,0 +1,17 @@
+{
+    "name": "ins-node-common",
+    "script": "./index.js",
+    "cwd": "./",
+    "watch": [
+      "index.js",
+      "router"
+    ],
+    "ignore_watch" : [
+      "node_modules", 
+      "logs"
+    ],
+    "watch_options": {
+      "followSymlinks": false
+    },
+    "error_file" : "./logs/app-err.log"
+  }

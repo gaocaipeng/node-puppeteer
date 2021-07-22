@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no'/>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <link rel="icon" href="//oss-img.u-bx.com/images/home/favicon.ico" type="image/x-icon">
+    <title>{{vehicleLicenceNo}}</title>
+    <style>
+      *{
+        margin:0;
+        padding:0;
+        list-style:none;
+        font-family: "PingFang SC", "PingFangSC", sans-serif;
+      }
+      body,html {
+        width:100%;
+      }
+      .wrapper {
+        width: 100%;
+        min-height: 667px;
+        overflow:hidden;
+        display: flex;
+        flex-direction:column;
+        background: pink;
+        position:relative;
+      }
+      .header-back {
+        width: 100%;
+        height: 100%;
+      }
+      .header-back img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .header-background {
+        width: 100%;
+        height: 122px;
+        position:relative;
+      }
+      .header-background img{
+        width:100%;
+        height:122px;
+      }
+      .header {
+        width: 100%;
+        height: 122px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position:absolute;
+      }
+      .header h2 {
+        height: 34px;
+        font-size:24px;
+        padding-left:44px;
+      }
+      .header p {
+        padding-right: 16px;
+        font-size: 14px;
+      }
+      .content {
+        top:63px;
+        position:absolute;
+        width:100%;
+        flex:1;
+        padding: 16px 5%;
+        box-sizing:border-box;
+      }
+      .content ul{
+        background: #fff;
+        border-radius:10px;
+        padding: 0 12px;
+      }
+      .content ul li{
+        display: flex;
+        justify-content: space-between;
+        align-items:center;
+        position: relative;
+      }
+      .content ul li .title {
+        // flex:1;
+        color:#666666;
+        font-size:16px;
+        font-weight:normal;
+        font-weight:500;
+        line-height:20px;
+      }
+      .content ul li span {
+        display:inline-block;
+        width: 72px;
+      }
+      .content ul li p {
+        width: 96px;
+        margin-right: 20px;
+      }
+      .content ul li b {
+        position: absolute;
+        top: 25px;
+        left: 96px;
+        font-size: 12px;
+        background: #F76260;
+        color: #fff;
+        padding: 0 3px;
+        border-radius: 2px;
+      }
+      .content ul li span.text-right {
+        text-align: right;
+      }
+      .content ul li:not(:first-child) span{
+        color:#FF9908;
+        font-size:24px;
+        font-weight:500;
+      }
+      .content ul li:not(:first-child) {
+        height: 64px;
+        border-bottom: 1px solid #E9E9E9;
+      }
+      .content ul li:first-child {
+        height: 47px;
+        font-size: 14px;
+      }
+      .content ul li:last-of-type {
+        border-bottom: 0;
+      }
+      .content ul li:first-child span{
+        color: #999999;
+      }
+      .content-bottom {
+        font-size: 12px;
+        padding: 10px 0;
+        padding-right: 18px;
+      }
+      .content-bottom .iconfont {
+        margin-right: 2px;
+        font-size: 12px;
+        margin-top: -1px;
+      }
+      .content-bottom p {
+        background: #F5F5F5;
+        display: flex;
+        border-radius:2px;
+        line-height: 16px;
+        padding: 4px 9px;
+        color:#666666;
+        position: relative;
+        font-weight:300;
+        display:inline-block;
+      }
+      .footer {
+        width:100%;
+        height:88px;
+        position:absolute;
+        bottom:0;
+      }
+      .footer img {
+        width:100%;
+        height:100%;
+      }
+      .footer-applets {
+        width:100%;
+        height:88px;
+        background: #fff;
+        display: flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:0 18px 0 33px;
+        box-sizing: border-box;
+        position:absolute;
+        bottom:0;
+      }
+      .user {
+        display:flex;
+        flex-direction: column;
+        justify-content:center;
+      }
+      .user-top {
+        width: 150px;
+        height: 36px;
+        display: flex;
+        align-items:center;
+        justify-content:space-between;
+      }
+      .user-top img{
+        width: 36px;
+        height: 36px;
+        border-radius:100%;
+      }
+      .user-top .user-name {
+        height: 36px;
+      }
+      .user-top .user-name p {
+        width: 100px;
+        line-height:1;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 14px;
+        color:#333;
+        padding-top:4px;
+      }
+      .user-top .user-name span {
+        display: block;
+        line-height:18px;
+        font-size:12px;
+        color:#666666;
+        font-weight:300;
+      }
+      .user-buttom {
+        margin-top:4px;
+      }
+      .user-buttom p {
+        width:100%;
+        font-size: 16px;
+        color:#f90;
+        display: flex;
+        justify-content:space-between;
+        letter-spacing:2px;
+      }
+      .qrCode {
+        width: 88px;
+        height: 86px;
+        display: flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:space-between;
+      }
+      .qrCode img {
+        width: 65px;
+        height:65px;
+      }
+      .qrCode p{
+        color:#333333;
+        font-size:12px;
+        font-weight:300;
+      }
+      .applets-info {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .applets-info .user-info {
+        display: flex;
+        align-items: center;
+        padding: 40px 18px 18px;
+      }
+      .applets-info .user-info img {
+        width: 55px;
+        height: 55px;
+        background: #D8D8D8;
+        border-radius: 50%;
+        display: block;
+        margin-right: 8px;
+      }
+      .applets-info .user-info .name {
+        font-size: 14px;
+        font-weight: 500;
+        color: #FFFFFF;
+        line-height: 20px;
+      }
+      .applets-info .user-info .desc {
+        font-size: 17px;
+        font-weight: 500;
+        color: #FFFFFF;
+        line-height: 24px;
+        margin-top: 1px;
+      }
+      .applets-info .qr-code {
+        margin: 242px auto 0 auto;
+        text-align: center;
+        width: 192px;
+      }
+      .applets-info .qr-code img {
+        display: block;
+        width: 192px;
+        height: 192px;
+        background-color: #ccc;
+      }
+      .applets-info .qr-code div {
+        font-size: 14px;
+        font-weight: 500;
+        color: #ff9900;
+        line-height: 20px;
+        margin-top: 16px;
+      }
+    </style>
+</head>
+
+<body>
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1665822_9zx56weuq9.css">
+  <div class="wrapper">
+    <div class="header">
+      <h2>{{cityName}}</h2>
+      <p>{{time}}</p>
+    </div>
+    <div class="content">
+      <ul>
+        <li>
+          <p></p>
+          <span>交强险</span>
+          <span class="text-right">商业险</span>
+        </li>
+        {{each tabloid value i}}
+          <li>
+            <p class="title">{{@value.title}}</p>
+            <span>
+              {{value.compulsoryRate}}%
+            </span>
+            <span class="text-right">
+              {{value.commercialRate}}%
+            </span>
+            {{if (value.commercialPromoteRate || value.compulsoryPromoteRate)}}
+              <b>群专属</b>
+            {{/if}}
+          </li>
+        {{/each}}
+        {{if deduction}}
+          <div class="content-bottom">
+            <p><i class="iconfont icon-dengpao"></i><span>{{deduction}}</span></p>
+          </div>
+        {{/if}}
+      </ul>
+    </div>
+    <div class="footer">
+      <img src="https://oss-img.u-bx.com/images/screenshot/tabloid-footer.png" />
+    </div>
+  </div>
+</body>
+
+</html>
